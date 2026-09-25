@@ -77,7 +77,7 @@ function RouteArc({ seed }: { seed: number }) {
   }, [seed]);
 
   useFrame((_, delta) => {
-    if (material.current) material.current.dashOffset -= delta * 0.6;
+       if (material.current) (material.current as unknown as { dashOffset: number }).dashOffset -= delta * 0.6;
   });
 
   return (
