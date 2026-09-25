@@ -1,0 +1,15 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8734A"/>
+      <stop offset="100%" stop-color="#D9A441"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="28" fill="#10242A"/>
+  <!-- route dots trailing to the pin, echoing the itinerary "trail" motif -->
+  <circle cx="30" cy="86" r="4" fill="#3E6259"/>
+  <circle cx="42" cy="74" r="4" fill="#3E6259"/>
+  <circle cx="52" cy="60" r="4.5" fill="#3E6259"/>
+  <path d="M60 30c-11 0-20 8.7-20 19.4 0 14.6 20 34.6 20 34.6s20-20 20-34.6C80 38.7 71 30 60 30z" fill="url(#g1)"/>
+  <circle cx="60" cy="49" r="8" fill="#10242A"/>
+</svg>

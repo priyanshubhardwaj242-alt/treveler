@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --tw-shadow-color: rgba(16,36,42,0.18);
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  @apply bg-sand text-harbor dark:bg-[#0E1B1D] dark:text-[#EFEAE0] font-body transition-colors duration-300;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+/* iOS Safari zooms the page in when a focused input is under 16px — this
+   keeps every text input/select at a safe minimum size on small screens
+   while desktop styling stays untouched via the sm: breakpoint. */
+input, select, textarea { font-size: 16px; -webkit-appearance: none; appearance: none; border-radius: 12px; }
+@media (min-width: 640px) { input, select, textarea { font-size: 14.5px; } }
+
+/* Comfortable minimum tap target size on touch devices (Apple HIG recommends 44x44pt) */
+button, a { -webkit-tap-highlight-color: transparent; }
+@media (pointer: coarse) {
+  button, [role="switch"], [role="tab"] { min-height: 44px; }
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes routeFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn { from { opacity: 0; transform: scale(0.3); } to { opacity: 1; transform: scale(1); } }
+
+.ambient-root { opacity: 0.85; }
+.dark .ambient-root, [data-theme="dark"] .ambient-root { opacity: 0.55; }
+@media (max-width: 768px) { .ambient-root { opacity: 0.4; } }
+
+/* soft vignette so the globe/particles fade toward the page edges rather
+   than cutting off hard against the viewport bounds */
+.ambient-vignette {
+  background: radial-gradient(ellipse at 75% 45%, transparent 0%, transparent 40%, var(--sand) 85%);
+}
+.dark .ambient-vignette, [data-theme="dark"] .ambient-vignette {
+  background: radial-gradient(ellipse at 75% 45%, transparent 0%, transparent 40%, #0E1B1D 85%);
+}
+
+h1, h2, h3, .font-display { font-family: var(--font-fraunces), serif; letter-spacing: -0.01em; }
+
+::selection { background: #E8734A; color: #fff; }
+
+.card {
+  @apply bg-white dark:bg-[#16282B] border border-mist dark:border-[#28403F] rounded-xl2 shadow-card dark:shadow-cardDark;
+}
+.chip {
+  @apply px-4 py-2 rounded-full border border-mist dark:border-[#28403F] text-sm font-medium bg-sand dark:bg-[#0E1B1D] cursor-pointer select-none transition-colors;
+}
+.chip.selected { @apply bg-moss border-moss text-white; }
+.btn-primary {
+  @apply px-7 py-3.5 rounded-full bg-coral text-white font-bold text-sm hover:bg-coral-dark transition-all duration-150 active:scale-95 hover:shadow-lg hover:shadow-coral/20;
+}
+.btn-outline {
+  @apply px-5 py-2.5 rounded-full border border-mist dark:border-[#28403F] font-semibold text-sm hover:border-coral transition-all duration-150 active:scale-95;
+}
+.btn-outline-hero {
+  @apply px-5 py-2.5 rounded-full border border-white/30 text-[#EFEAE0] font-semibold text-sm hover:border-coral hover:text-coral transition-all duration-150 active:scale-95;
+}
+/* Hover-lift for clickable cards (attraction grid, saved trips, etc.) —
+   deliberately not applied to every .card, since static content cards
+   (forms, budget panel) shouldn't look draggable/clickable. */
+.card-interactive {
+  @apply transition-all duration-200 hover:-translate-y-1 hover:shadow-xl cursor-pointer;
+}
+.field-input {
+  @apply w-full px-4 py-3 rounded-xl border border-mist dark:border-[#28403F] bg-sand dark:bg-[#0E1B1D] text-sm focus:outline-none focus:ring-2 focus:ring-coral;
+}
